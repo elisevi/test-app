@@ -16,7 +16,16 @@ function Login() {
     body: JSON.stringify({ mail, passwd })
   };
     const response = await fetch('https://unstable.thecrossproduct.xyz/v1/auth/login_front', requestOptions);
+    const cookieHeader = response.headers.get('Set-Cookie');
 
+    if (cookieHeader) {
+      // Des cookies sont présents dans la réponse
+      console.log('Des cookies sont présents :', cookieHeader);
+      console.log('Tous les cookies dans le navigateur :', document.cookie);
+    } else {
+      // Aucun cookie dans la réponse
+      console.log('Aucun cookie dans la réponse');
+    }
 console.log(JSON.parse(JSON.stringify(response)));
 };
 
