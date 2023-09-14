@@ -65,7 +65,7 @@ function App() {
               method: 'PUT',
               body: formData
         };
-        const response = await fetch(fileUrl, requestOptions);
+        const response2 = await fetch(fileUrl, requestOptions);
 
         console.log('put request')
         setUploadStatus('Le fichier a été téléchargé avec succès !');
