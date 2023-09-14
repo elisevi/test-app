@@ -15,9 +15,6 @@ function Login() {
     },
     body: JSON.stringify({ mail, passwd })
   };
-
-
-
     const response = await fetch('https://unstable.thecrossproduct.xyz/v1/auth/login_front', requestOptions);
 
 console.log(JSON.parse(JSON.stringify(response)));

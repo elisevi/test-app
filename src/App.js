@@ -34,13 +34,18 @@ function App() {
   // Fonction pour effectuer la requête GET et obtenir l'URL
   const fetchFileUrl = async () => {
     try {
-          // Les en-têtes de la requête
-          const headers = {
-            accept: 'application/json',
-          };
-          const url = 'https://api.thecrossproduct.xyz/v1/data/generate_presigned_post';
-          const response = await axios
-          .post(url, {"uri": nameFile,"size": sizeFile.toString()},{ headers});
+
+            const url = 'https://api.thecrossproduct.xyz/v1/data/generate_presigned_post';
+            const requestOptions = {
+              method: 'POST',
+              headers: {
+              'Content-Type': 'application/json'
+              },
+              body:  {"uri": nameFile,"size": sizeFile.toString()}
+            };
+
+          const response = await fetch(url, requestOptions);
+
           setFileUrl(response.data.url);
           console.log('post request : ',response.data.url)
           } catch (error) {
@@ -56,6 +61,12 @@ function App() {
 
       try {
         const response = await axios.put(fileUrl, formData, config);
+        const requestOptions = {
+              method: 'PUT',
+              body: formData
+        };
+        const response = await fetch(fileUrl, requestOptions);
+
         console.log('put request')
         setUploadStatus('Le fichier a été téléchargé avec succès !');
       } catch (error) {
