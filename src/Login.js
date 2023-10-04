@@ -18,8 +18,16 @@ function Login() {
   };
     const response = await fetch('http://127.0.0.1:8000/v1/auth/login_front', requestOptions);
    // const response = await fetch('http://127.0.0.4:8000/v1/auth/login_front', requestOptions);
-console.log(JSON.parse(JSON.stringify(response)));
-};
+  console.log(JSON.parse(JSON.stringify(response)));
+  const cookies = response.headers.get('Set-Cookie');
+  if (cookies) {
+      // Vous pouvez maintenant travailler avec les cookies, par exemple en les divisant en un tableau
+      const cookieArray = cookies.split(';');
+      console.log(cookieArray);
+    }
+
+  };
+
 
 
 
