@@ -16,7 +16,7 @@ function Login() {
     },
     body: JSON.stringify({ mail, passwd })
   };
-    const response = await fetch('https://api.thecrossproduct.xyz/v1/auth/login_front', requestOptions);
+    const response = await fetch('https://2023-10-04.thecrossproduct.xyz/v1/auth/login_front', requestOptions);
    // const response = await fetch('http://127.0.0.4:8000/v1/auth/login_front', requestOptions);
 console.log(JSON.parse(JSON.stringify(response)));
 };

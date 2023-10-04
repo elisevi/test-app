@@ -36,7 +36,7 @@ function App() {
     try {
 
             //const url = 'https://unstable.thecrossproduct.xyz/v1/data/generate_presigned_post';
-            const url = 'https://api.thecrossproduct.xyz/v1/data/generate_presigned_post';
+            const url = 'https://2023-10-04.thecrossproduct.xyz/v1/data/generate_presigned_post';
             const requestOptions = {
               method: 'POST',
               headers: {
