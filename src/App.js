@@ -35,16 +35,32 @@ function App() {
   const fetchFileUrl = async () => {
     try {
 
+            //const url = 'https://unstable.thecrossproduct.xyz/v1/data/generate_presigned_post';
             const url = 'https://api.thecrossproduct.xyz/v1/data/generate_presigned_post';
             const requestOptions = {
               method: 'POST',
               headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'credentials': 'include'
               },
               body:  {"uri": nameFile,"size": sizeFile.toString()}
             };
 
           const response = await fetch(url, requestOptions);
+          if (!response.ok) {
+            throw new Error('La requête a échoué');
+            }
+          // Vous pouvez également vérifier le statut de la réponse ici, par exemple response.status
+
+          // Vous pouvez accéder aux en-têtes de la réponse
+          const headers = response.headers;
+           console.log(headers);
+
+          // Vous pouvez extraire le contenu JSON de la réponse
+          const data = await response.json();
+
+          // Traitez les données ici
+            console.log(data);
 
           setFileUrl(response.data.url);
           console.log('post request : ',response.data.url)
